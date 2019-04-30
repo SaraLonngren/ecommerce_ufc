@@ -10,7 +10,8 @@
   </head>
 
   <body>
-    <%= link_to 'sair', destroy_user_session_path, method: :delete %>
+    <%= link_to 'home', admin_root_path %>
+    <%= link_to 'sair', destroy_employee_session_path, method: :delete %>
     <%= yield %>
   </body>
 </html>
