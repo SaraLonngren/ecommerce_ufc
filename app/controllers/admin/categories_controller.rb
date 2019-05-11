@@ -10,6 +10,7 @@ class Admin::CategoriesController < Admin::BaseController
   # GET /admin/categories/1
   # GET /admin/categories/1.json
   def show
+    render 'edit'
   end
 
   # GET /admin/categories/new
