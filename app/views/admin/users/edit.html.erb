@@ -1,0 +1,23 @@
+<section class="content-header">
+  <h1>
+    Usuários
+  </h1>
+  <ol class="breadcrumb">
+    <li><%= link_to admin_users_path do %><i class="fa fa-dashboard"></i> Usuários<% end %></li>
+    <li class="active">Editar</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h1 class="box-title"><%= @user.name %></h1>
+        </div>
+        <%= render 'form', user: @user %>
+      </div>
+    </div>
+  </div>
+<%= link_to 'Voltar', admin_categories_path %>
+</section>
+
