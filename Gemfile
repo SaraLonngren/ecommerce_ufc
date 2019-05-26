@@ -39,6 +39,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise', '~> 4.0'
 gem 'jquery-rails'
 gem 'adminlte2-rails'
+gem 'pry'
+gem 'pry-awesome_print'
+gem 'pry-byebug'
+gem 'pry-doc'
+gem 'pry-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

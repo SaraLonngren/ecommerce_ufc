@@ -13,7 +13,6 @@
 //= require rails-ujs
 //= require jquery.min
 //= require activestorage
-//= require turbolinks
 //= require bootstrap.min
 //= require slick.min
 

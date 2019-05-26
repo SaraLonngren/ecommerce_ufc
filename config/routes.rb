@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     resources :users
     root 'dashboard#index'
   end
-  root 'dashboard#index'
+  root 'pages#index'
+  get '/categories/:category', to: 'categories#show', as: 'categories'
   devise_for :employees
   # resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
