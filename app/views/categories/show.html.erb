@@ -108,7 +108,7 @@
                     </div>
                     <div class="product-body">
                       <p class="product-category">Category</p>
-                      <h3 class="product-name"><a href="#"><%= product.name %></a></h3>
+                      <h3 class="product-name"><%= link_to products_path(product.id) do %><%= product.name %><% end %></h3>
                       <h4 class="product-price"><%= product.price %> <del class="product-old-price"><%= product.price + 100 %></del></h4>
                     </div>
                     <div class="add-to-cart">

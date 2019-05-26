@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   root 'pages#index'
   get '/categories/:category', to: 'categories#show', as: 'categories'
+  get '/products/:id', to: 'products#show', as: 'products'
   devise_for :employees
   # resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
