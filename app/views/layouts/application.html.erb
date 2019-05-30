@@ -18,13 +18,14 @@
       <div id="top-header">
         <div class="container">
           <ul class="header-links pull-left">
-            <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-            <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-            <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+            <li><a href="#"><i class="fa fa-phone"></i> +55 (85) 3333-3333</a></li>
+            <li><a href="#"><i class="fa fa-envelope-o"></i> octopuscat@email.com</a></li>
+            <li><a href="#"><i class="fa fa-map-marker"></i> Rua dos bobos, 0</a></li>
           </ul>
           <ul class="header-links pull-right">
-            <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-            <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+            <li><a href="#"><i class="fa fa-dollar"></i> BRL</a></li>
+            <li><a href="#"><i class="fa fa-user-o"></i> Login</a></li>
+            <li><a href="#"><i class="fa fa-user-o"></i> Admin</a></li>
           </ul>
         </div>
       </div>
@@ -56,7 +57,7 @@
                     <option value="1">Category 02</option>
                   </select>
                   <input class="input" placeholder="Search here">
-                  <button class="search-btn">Search</button>
+                  <button class="search-btn">Pesquisar</button>
                 </form>
               </div>
             </div>
@@ -66,20 +67,20 @@
             <div class="col-md-3 clearfix">
               <div class="header-ctn">
                 <!-- Wishlist -->
-                <div>
+                <%# <div>
                   <a href="#">
                     <i class="fa fa-heart-o"></i>
                     <span>Your Wishlist</span>
                     <div class="qty">2</div>
                   </a>
-                </div>
+                </div> %>
                 <!-- /Wishlist -->
 
                 <!-- Cart -->
                 <div class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                     <i class="fa fa-shopping-cart"></i>
-                    <span>Your Cart</span>
+                    <span>Carrinho</span>
                     <div class="qty">3</div>
                   </a>
                   <div class="cart-dropdown">
@@ -165,42 +166,6 @@
     </nav>
     <!-- /NAVIGATION -->
     <%= yield %>
-
-    <!-- NEWSLETTER -->
-    <div id="newsletter" class="section">
-      <!-- container -->
-      <div class="container">
-        <!-- row -->
-        <div class="row">
-          <div class="col-md-12">
-            <div class="newsletter">
-              <p>Sign Up for the <strong>NEWSLETTER</strong></p>
-              <form>
-                <input class="input" type="email" placeholder="Enter Your Email">
-                <button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
-              </form>
-              <ul class="newsletter-follow">
-                <li>
-                  <a href="#"><i class="fa fa-facebook"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-twitter"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-instagram"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-pinterest"></i></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- /row -->
-      </div>
-      <!-- /container -->
-    </div>
-    <!-- /NEWSLETTER -->
 
     <!-- FOOTER -->
     <footer id="footer">
