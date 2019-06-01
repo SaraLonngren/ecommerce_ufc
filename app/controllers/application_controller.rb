@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  helper_method :current_order
 
   layout :layout_by_resource
 
@@ -14,6 +15,14 @@ class ApplicationController < ActionController::Base
       "admin_lte_2_login"
     else
       "application"
+    end
+  end
+
+  def current_order
+    if session[:order_id]
+      Order.find(session[:order_id])
+    else
+      Order.new
     end
   end
 end

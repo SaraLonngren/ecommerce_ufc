@@ -112,7 +112,13 @@
                       <h4 class="product-price"><%= product.price %> <del class="product-old-price"><%= product.price + 100 %></del></h4>
                     </div>
                     <div class="add-to-cart">
-                      <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                       <%= form_for @order_item, remote: true do |f| %>
+                        <%= f.hidden_field :product_id, value: product.id %>
+                        <%= f.number_field :quantity, {min: 1, value: 1} %>
+                        <%= button_tag(type: 'submit', class: "add-to-cart-btn") do %>
+                          <i class="fa fa-shopping-cart"></i> add to cart
+                        <% end %>
+                      <% end %>
                     </div>
                   </div>
                 </div>

@@ -1,0 +1,15 @@
+class CheckoutController < ApplicationController
+before_action :authenticate_user!
+  def create
+    @order = current_order
+    @item = @order.order_items.new(order_item_params)
+    @order.save!
+    session[:order_id] = @order.id
+  end
+
+  private
+
+  def order_item_params
+    params.require(:order_item).permit(:quantity, :product_id)
+  end
+end
