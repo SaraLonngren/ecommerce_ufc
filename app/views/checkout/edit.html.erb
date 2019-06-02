@@ -1,0 +1,126 @@
+    <div class="section">
+      <!-- container -->
+      <div class="container">
+        <!-- row -->
+        <div class="row">
+          <% if @items.present? %>
+            <div class="col-md-7">
+              <%= form_for @order, url: checkout_update_path do |f| %>
+                <!-- Billing Details -->
+                <div class="billing-details">
+                  <div class="section-title">
+                    <h3 class="title">Endereço de pagamento</h3>
+                  </div>
+                  <div class="form-group">
+                    <%= f.text_field :billing_address, placeholder: 'Endereço', class: 'input', required: true %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.text_field :billing_city, placeholder: 'Cidade', class: 'input', required: true %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.text_field :billing_country, placeholder: 'País', class: 'input', required: true %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.text_field :billing_zip, placeholder: 'CEP', class: 'input', required: true %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.text_field :billing_telephone, placeholder: 'Telefone', class: 'input', required: true %>
+                  </div>
+                </div>
+                <!-- /Billing Details -->
+
+                <!-- Shiping Details -->
+                <div class="shiping-details">
+                  <div class="section-title">
+                    <h3 class="title">Endereço de entrega</h3>
+                  </div>
+                  <div class="input-checkbox">
+                    <input type="checkbox" id="shiping-address">
+                    <label for="shiping-address">
+                      <span></span>
+                      Mandar para outro endereço?
+                    </label>
+                    <div class="caption">
+                      <div class="form-group">
+                        <%= f.text_field :shipment_address, placeholder: 'Endereço', class: 'input' %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.text_field :shipment_city, placeholder: 'Cidade', class: 'input' %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.text_field :shipment_country, placeholder: 'Pais', class: 'input' %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.text_field :shipment_zip, placeholder: 'CEP', class: 'input' %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.text_field :shipment_telephone, placeholder: 'Telefone', class: 'input' %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /Shiping Details -->
+
+                <!-- Order notes -->
+                <div class="order-notes">
+                  <%= f.text_field :note, placeholder: 'Observação', class: 'input' %>
+                </div>
+                <!-- /Order notes -->
+              </div>
+              <!-- Order Details -->
+              <div class="col-md-5 order-details">
+                <div class="section-title text-center">
+                  <h3 class="title">Seu Pedido</h3>
+                </div>
+                <div class="order-summary">
+                  <div class="order-col">
+                    <div><strong>PRODUCT</strong></div>
+                    <div><strong>TOTAL</strong></div>
+                  </div>
+                  <div class="order-products">
+                    <% @items.each do |item| %>
+                      <div class="order-col">
+                        <div><%= "#{item.quantity} #{item.product.name}" %></div>
+                        <div><%= item.product.price %></div>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="order-col">
+                    <div>Frete</div>
+                    <div><strong>Grátis</strong></div>
+                  </div>
+                  <div class="order-col">
+                    <div><strong>TOTAL</strong></div>
+                    <div><strong class="order-total">R$ <%= @order.total %></strong></div>
+                  </div>
+                </div>
+                <div class="payment-method">
+                  <div class="input-radio">
+                    <%= f.radio_button :payment_method, 'bank_slip', id: "payment-1", required: true %>
+                    <label for="payment-1">
+                      <span></span>
+                      Boleto
+                    </label>
+                  </div>
+                  <div class="input-radio">
+                    <%= f.radio_button :payment_method, 'credit_card', id: "payment-2", required: true %>
+                    <label for="payment-2">
+                      <span></span>
+                      Cartão de cŕedito
+                    </label>
+                  </div>
+                </div>
+                <%= f.submit 'Confirmar Pedido', class: 'primary-btn order-submit' %>
+              </div>
+              <!-- /Order Details -->
+            <% end %>
+          <% else %>
+            <div class="col-md-7">
+              Seu carrinho está vazio :(
+            </div>
+          <% end %>
+        </div>
+        <!-- /row -->
+      </div>
+      <!-- /container -->
+    </div>

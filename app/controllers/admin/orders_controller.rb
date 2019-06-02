@@ -6,6 +6,7 @@ class Admin::OrdersController < Admin::BaseController
   end
 
   def show
+    render 'edit'
   end
 
   def new
@@ -44,18 +45,18 @@ class Admin::OrdersController < Admin::BaseController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to admin_orders_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    def set_product
+    def set_order
       @order = Order.find(params[:id])
     end
 
     def order_params
-      params.require(:order).permit(:user_id, :status, :total, :shipment_address, :shipment_city, :shipment_state, :shipment_country, :shipment_zip,
+      params.require(:order).permit(:user_id, :status, :total, :shipment_address, :shipment_city, :shipment_state, :shipment_country, :shipment_zip, :payment_method,
                                     :shipment_telephone, :billing_address, :billing_city, :billing_state, :billing_country, :billing_zip, :billing_telephone, :note)
     end
 end

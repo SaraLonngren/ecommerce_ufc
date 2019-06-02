@@ -102,7 +102,7 @@
                           </div>  
                         <% end %>
                       <% else %>
-                        No Products :(
+                      <div class="no-products">No Products :(</div>
                       <% end %>
                     </div>
                     <div class="cart-summary">
@@ -110,7 +110,9 @@
                       <h5>SUBTOTAL: R$ <%= current_order.total || 0 %></h5>
                     </div>
                     <div class="cart-btns">
-                      <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                      <%= link_to checkout_edit_path do %>
+                        Finalizar pedido <i class="fa fa-arrow-circle-right"></i>
+                      <% end %>
                     </div>
                   </div>
                 </div>
