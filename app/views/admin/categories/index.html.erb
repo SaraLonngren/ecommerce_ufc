@@ -30,7 +30,9 @@
                   <td><%= category.id %></td>
                   <td><%= link_to category.name, admin_category_path(category) %></td>
                   <td><%= link_to category.description, admin_category_path(category) %></td>
-                  <td><%= link_to 'Apagar', admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <td><%= link_to 'Show', admin_category_path(category) %></td>
+                  <td><%= link_to 'Edit', edit_admin_category_path(category) %></td>
+                  <td><%= link_to 'Apagar', admin_category_path(category), method: :delete, data: { confirm: 'Tem certeza que deseja apagar?' } %></td>
                 </tr>
               <% end %>
 
@@ -53,4 +55,4 @@
 
 <br>
 
-<%= link_to 'New Category', new_admin_category_path %>
+<%# <%= link_to 'New Category', new_admin_category_path %> 
