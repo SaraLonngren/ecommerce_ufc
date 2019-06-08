@@ -15,6 +15,17 @@ class CheckoutController < ApplicationController
     respond_to do |format|
       if @order.update(order_params.merge(status: 'pago', user_id: current_user.id))
         cookies.delete(:order_id)
+        @products = OrderItem.where(order_id: @order.id) 
+        @products.each do |p|
+          @item = Product.find(p.product_id)
+          if @item.selling.nil?
+            @item.selling = 1
+          else 
+          @item.selling += 1
+          end
+          @item.save 
+        end
+        
         format.html { redirect_to root_path(@order)}
       else
         format.html { render :edit }
