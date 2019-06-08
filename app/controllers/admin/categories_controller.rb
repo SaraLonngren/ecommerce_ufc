@@ -11,6 +11,8 @@ class Admin::CategoriesController < Admin::BaseController
   # GET /admin/categories/1.json
   def show
     render 'edit'
+
+    @orders = Order.order()
   end
 
   # GET /admin/categories/new
@@ -29,7 +31,7 @@ class Admin::CategoriesController < Admin::BaseController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to admin_category_path(@category), notice: 'Category was successfully created.' }
+        format.html { redirect_to 'http://localhost:3000/admin/categories', notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }
