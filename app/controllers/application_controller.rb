@@ -19,8 +19,12 @@ class ApplicationController < ActionController::Base
   end
 
   def current_order
-    if session[:order_id]
-      Order.find(session[:order_id])
+    if cookies[:order_id]
+      begin
+        Order.find(cookies[:order_id])
+      rescue
+        Order.new
+      end
     else
       Order.new
     end

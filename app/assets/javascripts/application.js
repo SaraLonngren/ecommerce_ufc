@@ -12,6 +12,7 @@
 //
 //= require rails-ujs
 //= require jquery.min
+//= require jquery_ujs 
 //= require activestorage
 //= require bootstrap.min
 //= require slick.min

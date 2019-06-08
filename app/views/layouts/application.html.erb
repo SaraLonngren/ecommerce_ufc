@@ -81,13 +81,13 @@
                   <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                     <i class="fa fa-shopping-cart"></i>
                     <span>Carrinho</span>
-                    <div class="qty">3</div>
+                    <div class="qty"><%= current_order.order_items.count %></div>
                   </a>
                   <div class="cart-dropdown">
                     <div class="cart-list">
                       <% if current_order && current_order.order_items.any? %>
                         <% current_order.order_items.each do |item| %>
-                          <div class="product-widget">
+                          <div id="<%= item.id %>" class="product-widget">
                             <div class="product-img">
                               <img src="./img/product01.png" alt="">
                             </div>
@@ -98,7 +98,7 @@
                                 R$ <%= item.product.price %>
                               </h4>
                             </div>
-                            <button class="delete"><i class="fa fa-close"></i></button>
+                            <%= button_to item, {method: :delete, class: 'delete', remote: true} do %><i class="fa fa-close"></i><% end %>
                           </div>  
                         <% end %>
                       <% else %>

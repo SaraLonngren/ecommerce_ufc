@@ -1,16 +1,23 @@
 $('.cart-list').find('.no-products').remove()
-$('.cart-list').append(`
-<div class="product-widget">
-  <div class="product-img">
-    <img src="./img/product01.png" alt="">
+product = $('.cart-list').find('#<%= @item.id %>')
+if (product.length > 0) {
+  product.find('.qty').html('<%= @item.quantity %>')
+} else {
+  $('.cart-list').append(`
+  <div id="<%= @item.id %>" class="product-widget">
+    <div class="product-img">
+      <img src="./img/product01.png" alt="">
+    </div>
+    <div class="product-body">
+      <h3 class="product-name"><%= link_to @item.product.name, products_path(@item.product) %></h3>
+      <h4 class="product-price">
+        <span class="qty"><%= @item.quantity %></span>
+        R$ <%= @item.product.price %>
+      </h4>
+    </div>
+    <%= link_to order_item_path(@item), method: 'delete', class: 'delete', remote: true do %><i class="fa fa-close"></i><% end %>
   </div>
-  <div class="product-body">
-    <h3 class="product-name"><%= link_to @item.product.name, products_path(@item.product) %></h3>
-    <h4 class="product-price">
-      <span class="qty"><%= @item.quantity %></span>
-      R$ <%= @item.product.price %>
-    </h4>
-  </div>
-  <button class="delete"><i class="fa fa-close"></i></button>
-</div>
-`)
+  `)
+  $('.dropdown-toggle').find('.qty').html('<%= @order.order_items.count %>')
+}
+$('.cart-summary').find('h5').html('SUBTOTAL: R$ <%=@order.total %>')

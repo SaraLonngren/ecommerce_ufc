@@ -1,0 +1,8 @@
+$('.dropdown-toggle').find('.qty').html('<%= @order.order_items.count %>')
+$('.cart-list').find('#<%= @item.id %>').remove()
+<% if @order.order_items.reload.count == 0 %>
+  $('.cart-list').append(`
+    <div class="no-products">No Products :(</div>
+  `)
+<% end %>
+$('.cart-summary').find('h5').html('SUBTOTAL: R$ <%=@order.total%>')

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/categories/:category', to: 'categories#show', as: 'categories'
   get '/products/:id', to: 'products#show', as: 'products'
   devise_for :employees
-  resources :order_items, only: [:create]
+  resources :order_items, only: [:create, :destroy]
   get '/checkout/edit', to: 'checkout#edit'
   patch '/checkout/update', to: 'checkout#update'
   # resources :users
