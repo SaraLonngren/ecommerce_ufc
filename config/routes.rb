@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :users
     root 'dashboard#index'
   end
+
   root 'pages#index'
   get '/categories/:category', to: 'categories#show', as: 'categories'
   get '/products/:id', to: 'products#show', as: 'products'
@@ -16,4 +17,9 @@ Rails.application.routes.draw do
   # resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
+
+  authenticated :user do 
+  get '/my_orders', to: 'users#my_orders', as: 'my_orders' 
+  end 
+  
 end
