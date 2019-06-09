@@ -21,9 +21,11 @@
         <tr>
           <td><%= z.id %></td>
           <% @my_products = my_products(z) %>
+          <td>          
           <% @my_products.each do |a| %>
-            <td> <%= a %></td>
+            <p><%= a %></p>
           <% end %>
+          </td>
           <td><%= z.status.capitalize %></td>
           <td><%= z.created_at %></td>
         </tr>
@@ -33,24 +35,3 @@
   </div>
 </div>
         <!-- /.box-body -->
-
-    <% @my_orders.each do |z| %>
-<div style="border: 1px gray solid; border-radius: 5px; margin: 6px;">
-    <p>Número do pedido: <%= z.id %></p>
-    <% @my_products = my_products(z) %>
-    <% @my_products.each do |a| %>
-        <p>Nome do produto: <%= a %></p>
-    <% end %>
-    <p>Status: <%= z.status.capitalize %></p>
-    <p>Método de pagamento: 
-    <%# if z.payment_method = "bank_slip"%>
-     <%# Boleto %>
-    <%# elsif z.payment_method = "credit_card " %>
-     <%# Cartão de Crédito %>
-     <%#else %>
-    <%# end %>
-    <%# z.payment_method %>
-    </p>
-    <p>Data do pedido: <%= z.created_at %></p>
-</div>
-<% end %>

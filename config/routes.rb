@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :orders
     resources :categories
     resources :users
+    resources :employees
     root 'dashboard#index'
   end
 
@@ -21,5 +22,5 @@ Rails.application.routes.draw do
   authenticated :user do 
   get '/my_orders', to: 'users#my_orders', as: 'my_orders' 
   end 
-  
+
 end
