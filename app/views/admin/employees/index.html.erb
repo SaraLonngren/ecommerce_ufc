@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+<section class="content-header">
+  <%= link_to new_admin_employee_path, class: 'btn btn-app' do %>
+    <i class="fa fa-edit"></i> Nova Funcionário
+  <% end %>
+  <ol class="breadcrumb">
+    <li><%= link_to new_admin_employee_path do %><i class="fa fa-dashboard"></i>Dashboard<% end %></li>
+    <li class="active">Funcionário</li>
+  </ol>
+</section>
+
+<div class="container">
+  <div class="box-body">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th style="width: 10px">ID do Funcionário</th>
+          <th>Nome do Funcionário</th>
+          <th>Salário</th>
+          <th>Email</th>
+        </tr>
+        <% @employees.each do |x| %>
+        <tr>
+          <td><%= x.id %></td>
+          <td><%= x.name %></td>
+          <td><%= x.salary %></td>
+          <td><%= x.email %></td>
+          <td><%= link_to 'Show', admin_employee_path(x) %></td>
+          <td><%= link_to 'Edit', edit_admin_employee_path(x) %></td>
+          <td><%= link_to 'Apagar', admin_employee_path(x), method: :delete, data: { confirm: 'Tem certeza que deseja apagar?' } %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

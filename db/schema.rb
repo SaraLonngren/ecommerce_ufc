@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2019_06_08_201040) do
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "selling"
+    t.integer "selling", default: 0
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
