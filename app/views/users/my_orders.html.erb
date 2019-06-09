@@ -9,6 +9,9 @@
  <!-- /.box-header -->
 <div class="container">
   <div class="box-body">
+  <% if @my_orders.count == 0%>
+  <p>Você ainda não realizou nenhuma compra :( Bora abrir a carteira?</p>
+  <% else %>
     <table class="table table-bordered">
       <tbody>
         <tr>
@@ -16,6 +19,8 @@
           <th>Nome do Produto</th>
           <th>Status</th>
           <th>Data do Pedido</th>
+          <th>Método de pagamento</th>
+          <th>Valor da compra</th>
         </tr>
         <% @my_orders.each do |z| %>
         <tr>
@@ -23,15 +28,25 @@
           <% @my_products = my_products(z) %>
           <td>          
           <% @my_products.each do |a| %>
-            <p><%= a %></p>
+            <p> • <%= Product.find(a).name %> (x<%= product_quanity(z,a) %>)</p>
           <% end %>
           </td>
-          <td><%= z.status.capitalize %></td>
-          <td><%= z.created_at %></td>
+          <td><%= z.status.capitalize %></td> 
+          <td><%= z.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+          <% if z.payment_method.eql? 'bank_slip' %>
+          <td>Boleto</td>
+          <% elsif z.payment_method.eql? 'credit_card' %>
+          <td>Cartão de crédito</td>
+          <% else %>
+          <td></td>
+          <% end %>
+          <td>R$ <%= z.total %></td>
         </tr>
         <% end %>
       </tbody>
     </table>
+    <% end %>
   </div>
 </div>
+
         <!-- /.box-body -->
