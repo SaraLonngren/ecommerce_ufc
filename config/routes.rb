@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get '/checkout/edit', to: 'checkout#edit'
   patch '/checkout/update', to: 'checkout#update'
   get '/search', to:'products#search', as:'search'
-  post '/search', to:'produtcs#query', as:'query'
+  post '/search', to:'products#query', as:'query'
   
   # resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
