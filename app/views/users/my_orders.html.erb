@@ -1,6 +1,40 @@
-<h1>Alo alo marciano, aqui quem fala é da terra!</h1>
+<div id="breadcrumb" class="section">
+  <div class="container">
+    <div class="row">
+      <h3 class="breadcrumb-header">Meus Pedidos</h3>
+    </div>
+  </div>
+</div>
 
-<% @my_orders.each do |z| %>
+ <!-- /.box-header -->
+<div class="container">
+  <div class="box-body">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th style="width: 10px">ID do Pedido</th>
+          <th>Nome do Produto</th>
+          <th>Status</th>
+          <th>Data do Pedido</th>
+        </tr>
+        <% @my_orders.each do |z| %>
+        <tr>
+          <td><%= z.id %></td>
+          <% @my_products = my_products(z) %>
+          <% @my_products.each do |a| %>
+            <td> <%= a %></td>
+          <% end %>
+          <td><%= z.status.capitalize %></td>
+          <td><%= z.created_at %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+        <!-- /.box-body -->
+
+    <% @my_orders.each do |z| %>
 <div style="border: 1px gray solid; border-radius: 5px; margin: 6px;">
     <p>Número do pedido: <%= z.id %></p>
     <% @my_products = my_products(z) %>
