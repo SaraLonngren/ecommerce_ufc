@@ -1,1 +1,5 @@
-sup!
+
+<%= params[:category_id].is_a?(String) %>
+<% @search.each do |s| %>
+	<%= s.name %>
+<% end %>
