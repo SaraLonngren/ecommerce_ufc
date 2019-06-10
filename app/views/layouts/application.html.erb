@@ -84,9 +84,9 @@
                   <% Category.all.each do |c| %>
                     <% @all_categories << c %> 
                   <% end %>
-                  <%= select_tag :category_id, options_from_collection_for_select(@all_categories, "id", "name", params[:category_id].to_i), class: "input-select" %>
+                  <%= select_tag :category_id, options_from_collection_for_select(@all_categories, "id", "name", params[:category_id].to_i), class: "input-select  tamanho" %>
                   <%= text_field_tag :name, nil, {class: "input", placeholder: "Pesquise aqui"} %>
-                  <%= submit_tag "Pesquisar", class: "search-btn" %>
+                  <%= submit_tag "Pesquisar", class: "search-btn"%>
 
               <% end %>
 
