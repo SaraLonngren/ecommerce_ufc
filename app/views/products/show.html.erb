@@ -63,36 +63,32 @@
               </div>
               <div>
                 <h3 class="product-price"><%= @product.price %> <del class="product-old-price"><%= @product.price + 150 %></del></h3>
-                <span class="product-available">In Stock</span>
+                <span class="product-available">Em estoque</span>
               </div>
+
               <p><%= @product.name %></p>
 
-              <%= form_for @order_item, remote: true do |f| %>
-              <%= f.hidden_field :product_id, value: @product.id %>
+              <div class="product-options">
+                <ul class="product-links">
+                  <li>Categoria:</li>
+                  <li><%= link_to @category.name, categories_path(@category.name) %></li>
+                </ul>
+
+                <%= form_for @order_item, remote: true do |f| %>
+                <%= f.hidden_field :product_id, value: @product.id %>
+                  
                 <div class="add-to-cart">
-                  <div class="qty-label">
-                    <%= f.label :quantity, 'Qtd'%>
-                    <%= f.number_field :quantity, {min: 1, value: 1} %>
-                  </div>
-                  <%= button_tag(type: 'submit', class: "add-to-cart-btn") do %>
-                    <i class="fa fa-shopping-cart"></i> Adicionar ao carrinho
-                  <% end %>
-                  <%# <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar ao carrinho</button> %>
+                    <div class="qty-label" style="margin-top: 10px; margin-bottom: 10px;">
+                      <%= f.label :quantity, 'Quantidade:'%>
+                      <%= f.number_field :quantity, {min: 1, value: 1} %>
+                    </div>
+                    <%= button_tag(type: 'submit', class: "add-to-cart-btn") do %>
+                      <i class="fa fa-shopping-cart"></i> Adicionar ao carrinho
+                    <% end %>
+                    <%# <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar ao carrinho</button> %>
                 </div>
-              <% end %>
-              <ul class="product-links">
-                <li>Category:</li>
-                <li><%= link_to @category.name, categories_path(@category.name) %></li>
-              </ul>
-
-              <ul class="product-links">
-                <li>Share:</li>
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fa fa-envelope"></i></a></li>
-              </ul>
-
+                <% end %>
+              </div>
             </div>
           </div>
           <!-- /Product details -->

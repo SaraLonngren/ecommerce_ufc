@@ -8,5 +8,10 @@ class PagesController < ApplicationController
 
     @search_product = Product.new
     
+    @category = Category.find_by(name: params[:category])
+    
+    # @product = @category.product
+
+    # @order_item = current_order.order_items.new
   end
 end
