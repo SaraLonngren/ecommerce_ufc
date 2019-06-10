@@ -67,7 +67,7 @@
             <div class="col-md-6">
               <div class="header-search">
               <%# if true == false %>
-                <%= form_for( query_path, method: :get) do %>
+                <%= form_tag( query_path, method: :get) do %>
                 <% if true == false #@search_product.errors.any? %>
                   <div id="error_explanation">
                     <h2><%= pluralize(@search_product.errors.count, "error") %> prohibited this product from being saved:</h2>
