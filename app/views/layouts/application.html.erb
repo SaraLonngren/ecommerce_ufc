@@ -79,8 +79,12 @@
                     </ul>
                   </div>
                 <% end %>
-                
-                  <%= select_tag :category_id, options_from_collection_for_select(Category.all, "id", "name", params[:category_id].to_i), class: "input-select" %>
+                  <% @all_categories = Array.new() %>
+                  <% @all_categories << Category.new(id: 0, name: 'Tudo') %>
+                  <% Category.all.each do |c| %>
+                    <% @all_categories << c %> 
+                  <% end %>
+                  <%= select_tag :category_id, options_from_collection_for_select(@all_categories, "id", "name", params[:category_id].to_i), class: "input-select" %>
                   <%= text_field_tag :name, nil, {class: "input", placeholder: "Pesquise aqui"} %>
                   <%= submit_tag "Pesquisar", class: "search-btn" %>
 
