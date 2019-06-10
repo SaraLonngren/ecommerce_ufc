@@ -6,13 +6,14 @@ class ProductsController < ApplicationController
   end
 
   def query
-    @product = Product.new(product_params)
-    @products = Product.where(category_id: @product.category_id)
+   #@product = Product.new(product_params)
+    #@products = Product.where(category_id: @product.category_id)
 
-    redirect_to search_path(@products)
+    redirect_to search_path
   end 
 
   def search
+    
   end 
 
   private
