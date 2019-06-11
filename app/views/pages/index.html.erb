@@ -12,7 +12,7 @@
               </div>
               <div class="shop-body">
                 <h3>Informática</h3>
-                <a href="#" class="cta-btn"><% link_to  categories_path(3) %>Comprar agora <i class="fa fa-arrow-circle-right"></i></a>
+                <%= link_to categories_path(category: Category.find_by(name: 'Informática').name),  class: 'cta-btn' do%>Comprar agora <i class="fa fa-arrow-circle-right"></i><% end %>
               </div>
             </div>
           </div>
@@ -26,7 +26,7 @@
               </div>
               <div class="shop-body">
                 <h3>Eletrodomésticos</h3>
-                <a href="#" class="cta-btn">Comprar agora <i class="fa fa-arrow-circle-right"></i></a>
+                <%= link_to categories_path(category: Category.find_by(name: 'Eletrodomésticos').name),  class: 'cta-btn' do%>Comprar agora <i class="fa fa-arrow-circle-right"></i><% end %>
               </div>
             </div>
           </div>
@@ -40,7 +40,7 @@
               </div>
               <div class="shop-body">
                 <h3>Jogos</h3>
-                <a href="#" class="cta-btn">Comprar agora <i class="fa fa-arrow-circle-right"></i></a>
+                <%= link_to categories_path(category: Category.find_by(name: 'Jogos').name),  class: 'cta-btn' do%>Comprar agora <i class="fa fa-arrow-circle-right"></i><% end %>
               </div>
             </div>
           </div>
@@ -75,18 +75,18 @@
                 <div id="tab1" class="tab-pane active">
                   <div class="products-slick" data-nav="#slick-nav-1">
                   
-                  <% 5.times do |q|%>
+                  <% @recents.each do |r|%>
                     <!-- product -->
                       <div class="product">
                         <div class="product-img">
-                          <%= link_to  products_path(@recentes[q].id) do %>
+                          <%= link_to  products_path(r.id) do %>
                           <img style="width:100%;" src="./img/product01.png" alt="">
                           <% end%>
                         </div>
                         <div class="product-body">
-                          <p class="product-category"><%= Category.find(@recentes[q].category_id).name %></p>
-                          <h3 class="product-name"><a href="#"><%= @recentes[q].name %></a></h3>
-                          <h4 class="product-price">R$ <%= @recentes[q].price %></del></h4>
+                          <p class="product-category"><%= Category.find(r.category_id).name %></p>
+                          <h3 class="product-name"><a href="#"><%= r.name %></a></h3>
+                          <h4 class="product-price">R$ <%= r.price %></del></h4>
                         </div>
                         <div class="add-to-cart">
                           <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar ao carrinho</button>
@@ -137,22 +137,16 @@
                 <div id="tab2" class="tab-pane fade in active">
                   <div class="products-slick" data-nav="#slick-nav-2">
                     
-                    <% 5.times do |p| %>
+                    <% @product_list.each do |p| %>
                       <!-- product -->
                       <div class="product">
                         <div class="product-img">
                           <img src="./img/product06.png" alt="">
                         </div>
                         <div class="product-body">
-                          <p class="product-category"><%= Category.find(@product_list[p].category_id).name %></p>
-                          <h3 class="product-name"><a href="#"><%= @product_list[p].name %></a></h3>
-                          <h4 class="product-price">R$ <%= @product_list[p].price %></h4>
-                        
-                          <div class="product-btns">
-                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                          </div>
+                          <p class="product-category"><%= Category.find(p.category_id).name %></p>
+                          <h3 class="product-name"><a href="#"><%= p.name %></a></h3>
+                          <h4 class="product-price">R$ <%= p.price %></h4>
                         </div>
                         <div class="add-to-cart">
                           <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>

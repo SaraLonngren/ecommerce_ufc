@@ -2,9 +2,9 @@ class PagesController < ApplicationController
   def index
     @products = Product.all
 
-    @product_list = Product.order(selling: :desc)
+    @product_list = Product.order(selling: :desc).first(5)
 
-    @recentes = Product.order(created_at: :desc)
+    @recents = Product.order(created_at: :desc).first(5)
 
     @search_product = Product.new
     
