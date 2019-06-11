@@ -22,7 +22,7 @@
           <div class="col-md-4 col-xs-6">
             <div class="shop">
               <div class="shop-img">
-                <img src="./img/shop03.png" alt="">
+                <img src="./assets/eletro.jpg" alt="">
               </div>
               <div class="shop-body">
                 <h3>Eletrodomésticos</h3>
@@ -36,7 +36,7 @@
           <div class="col-md-4 col-xs-6">
             <div class="shop">
               <div class="shop-img">
-                <img src="./img/shop02.png" alt="">
+                <img src="/assets/ps4.jpg" alt="">
               </div>
               <div class="shop-body">
                 <h3>Jogos</h3>
@@ -149,9 +149,11 @@
                       <!-- product -->
                       <div class="product">
                         <div class="product-img">
+                        <%= link_to  products_path(p.id) do %>
                           <!-- <img src="./img/product06.png" alt=""> -->
                           <% src = p.image.attached? ? p.image : '/img/product01.png' %>
                           <%= image_tag src, width: '100%' %>
+                          <% end %>
                         </div>
                         <div class="product-body">
                           <p class="product-category"><%= Category.find(p.category_id).name %></p>
