@@ -4,6 +4,8 @@ class Product < ApplicationRecord
   validates :name, uniqueness: true
   validates :price, numericality: true
 
+  has_one_attached :image
+
   def to_s
     name
   end
