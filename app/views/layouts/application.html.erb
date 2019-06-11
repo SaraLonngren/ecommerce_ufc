@@ -69,9 +69,8 @@
 
             <div class="col-md-6">
               <div class="header-search">
-              <% if true == false %>
-                <%= form_for(@search_product, url: query_path, method: :post) do |form| %>
-                <% if @search_product.errors.any? %>
+                <%= form_tag( search_path, method: :get) do %>
+                <% if true == false #@search_product.errors.any? %>
                   <div id="error_explanation">
                     <h2><%= pluralize(@search_product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
@@ -83,17 +82,20 @@
                   </div>
                 <% end %>
                 
-                  <%= form.select :category_id, options_from_collection_for_select(Category.all, "id", "name", params[:category_id].to_i), class: 'input-select' %>
-                  <%= form.text_field :name, placeholder: "Pesquise aqui" %>
+                  <% @all_categories = Array.new() %>
+                  <% @all_categories << Category.new(id: 0, name: 'Tudo') %>
+                  <% Category.all.each do |c| %>
+                    <% @all_categories << c %> 
+                  <% end %>
+                  <%= select_tag :category_id, options_from_collection_for_select(@all_categories, "id", "name", params[:category_id].to_i), class: "input-select  tamanho" %>
+                  <%= text_field_tag :name, nil, {class: "input", placeholder: "Pesquise aqui"} %>
+                  <%= submit_tag "Pesquisar", class: "search-btn"%>
 
-                <div class="search-btn">
-                  <%= form.submit %>
-                </div>
               <% end %>
 
-              <% end %>
+              <%# end %>
 
-                 <!--> <form>
+                 <!-- <form>
                   <select class="input-select">
                     <option value="0">All Categories</option>
                     <option value="1">Category 01</option>
