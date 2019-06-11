@@ -32,11 +32,13 @@
               <% 3.times do |i| %>
                 <div class="product-widget">
                   <div class="product-img">
-                    <img src="/img/product01.png" alt="">
+                    <!-- <img src="/img/product01.png" alt=""> -->
+                    <% src = @product_list[i].image.attached? ? @product_list[i].image : '/img/product01.png' %>
+                    <%= image_tag src, width: '100%' %>
                   </div>
                   <div class="product-body">
                     <p class="product-category"><%= Category.find(@product_list[i].category_id).name %></p>
-                    <h3 class="product-name"><a href="#"><%= @product_list[i].name %></a></h3>
+                    <h3 class="product-name"><%= link_to products_path(@product_list[i]) do%><%= @product_list[i].name %><% end %></h3>
                     <h4 class="product-price"> R$ <%= @product_list[i].price %></h4>
                   </div>
                 </div>
@@ -56,7 +58,9 @@
                 <div class="col-md-4 col-xs-6">
                   <div class="product">
                     <div class="product-img">
-                      <img src="/img/product03.png" alt="">
+                      <!-- <img src="/img/product03.png" alt=""> -->
+                      <% src = product.image.attached? ? product.image : '/img/product01.png' %>
+                      <%= image_tag src, width: '100%' %>
                     </div>
                     <div class="product-body">
                       <p class="product-category">Category</p>
