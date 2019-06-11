@@ -80,7 +80,9 @@
                       <div class="product">
                         <div class="product-img">
                           <%= link_to  products_path(r.id) do %>
-                          <img style="width:100%;" src="./img/product01.png" alt="">
+                          <!-- <img style="width:100%;" src="./img/product01.png" alt=""> -->
+                          <% src = r.image.attached? ? r.image : '/img/product01.png' %>
+                          <%= image_tag src, width: '100%' %>
                           <% end%>
                         </div>
                         <div class="product-body">
@@ -141,7 +143,9 @@
                       <!-- product -->
                       <div class="product">
                         <div class="product-img">
-                          <img src="./img/product06.png" alt="">
+                          <!-- <img src="./img/product06.png" alt=""> -->
+                          <% src = p.image.attached? ? p.image : '/img/product01.png' %>
+                          <%= image_tag src, width: '100%' %>
                         </div>
                         <div class="product-body">
                           <p class="product-category"><%= Category.find(p.category_id).name %></p>
