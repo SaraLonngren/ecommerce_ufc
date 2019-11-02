@@ -35,7 +35,7 @@ gem 'pg'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'devise', '~> 4.0'
+gem 'devise', '~> 4.7'
 gem 'jquery-rails'
 gem 'adminlte2-rails'
 gem 'pry'
